@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* Definición de tu paleta personalizada directamente en CSS */
+@theme {
+  --color-brand-50: #f0fdf9;
+  --color-brand-100: #d1fae5;
+  --color-brand-200: #299179;
+  --color-brand-500: #246548;
+  --color-brand-600: #1B6458;
+  --color-brand-800: #1E4235;
+  --color-brand-900: #193831;
+
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+}

@@ -1,17 +1,189 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import TopBanner from '../components/TopBanner.astro';
+import Hero from '../components/Hero.astro';
+import CarreraCard from '../components/CarreraCard.astro';
+import Requisitos from '../components/Requisitos.astro';
+import Footer from '../components/Footer.astro';
+import { carreras } from '../data/carreras.js';
+import '../styles/global.css';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Esc. Sup. de Comercio N° 2 - Oferta Académica">
+  <Navbar />
+  <TopBanner />
+  <main>
+    <Hero />
+
+    <section id="nosotros" class="py-16 px-4 bg-slate-900">
+      <div class="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-center">
+        <div class="space-y-6">
+          <span class="inline-block bg-indigo-500/15 text-indigo-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-[0.2em]">
+            Nuestro instituto
+          </span>
+          <h2 class="text-3xl md:text-4xl font-bold text-white">Formación que prepara para trabajar, crecer y liderar.</h2>
+          <p class="text-slate-300 leading-relaxed">
+            La Escuela Superior de Comercio N° 2 de Jardín América acompaña a miles de estudiantes con una propuesta educativa orientada a la práctica, la innovación y la inserción laboral.
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            Desde 2021, trabajamos con una mirada moderna para brindar formación técnica de nivel superior, acompañada por docentes comprometidos y una experiencia académica basada en proyectos, resolución de problemas y vinculación con el entorno productivo.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5">
+            <p class="text-3xl font-extrabold text-indigo-400">3</p>
+            <p class="mt-2 text-sm text-slate-300">Años de formación orientada a la práctica</p>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5">
+            <p class="text-3xl font-extrabold text-indigo-400">+500</p>
+            <p class="mt-2 text-sm text-slate-300">Estudiantes acompañados en su camino</p>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5">
+            <p class="text-3xl font-extrabold text-indigo-400">100%</p>
+            <p class="mt-2 text-sm text-slate-300">Enfoque en formación profesional y laboral</p>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5">
+            <p class="text-3xl font-extrabold text-indigo-400">4</p>
+            <p class="mt-2 text-sm text-slate-300">Áreas de especialización para tu futuro</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 px-4 bg-slate-950">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12 space-y-2">
+          <h2 class="text-3xl font-bold text-white">¿Por qué elegirnos?</h2>
+          <p class="text-slate-300">Una educación cercana, actualizada y orientada a resultados.</p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-sm shadow-black/15">
+            <div class="text-indigo-400 text-2xl mb-3">✓</div>
+            <h3 class="font-bold text-white mb-2">Formación práctica</h3>
+            <p class="text-sm text-slate-300">Trabajamos con proyectos reales y herramientas del entorno profesional.</p>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-sm shadow-black/15">
+            <div class="text-indigo-400 text-2xl mb-3">🎯</div>
+            <h3 class="font-bold text-white mb-2">Orientación laboral</h3>
+            <p class="text-sm text-slate-300">Desarrollamos competencias que se aplican directamente al mercado de trabajo.</p>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-sm shadow-black/15">
+            <div class="text-indigo-400 text-2xl mb-3">🤝</div>
+            <h3 class="font-bold text-white mb-2">Acompañamiento</h3>
+            <p class="text-sm text-slate-300">Te guiamos durante todo el proceso de formación y orientación vocacional.</p>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-sm shadow-black/15">
+            <div class="text-indigo-400 text-2xl mb-3">📈</div>
+            <h3 class="font-bold text-white mb-2">Futuro profesional</h3>
+            <p class="text-sm text-slate-300">Te preparás para insertarte en un mercado laboral en constante evolución.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="carreras" class="py-16 px-4 bg-slate-800 text-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12 space-y-2">
+          <h2 class="text-3xl font-bold text-white">Oferta Académica</h2>
+          <p class="text-slate-300">Conocé nuestras carreras terciarias con validez oficial y orientación profesional.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {carreras.map((carrera) => (
+            <CarreraCard 
+              id={carrera.id}
+              titulo={carrera.titulo}
+              duracion={carrera.duracion}
+              modalidad={carrera.modalidad}
+              descripcion={carrera.descripcion}
+              pdf={carrera.pdf}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 px-4 bg-slate-900">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12 space-y-2">
+          <h2 class="text-3xl font-bold text-white">Qué dicen nuestros estudiantes</h2>
+          <p class="text-slate-300">Experiencias reales dentro del instituto.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6">
+            <p class="text-slate-300 italic">“La carrera me ayudó a entender cómo encarar el trabajo práctico y a desarrollar una visión más clara de mi futuro profesional.”</p>
+            <div class="mt-4 font-semibold text-white">María, estudiante de Diseño</div>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6">
+            <p class="text-slate-300 italic">“Los contenidos son actuales, muy útiles y pensados para aplicarlos en la vida real. Me sentí acompañada en cada etapa.”</p>
+            <div class="mt-4 font-semibold text-white">Lucas, estudiante de Marketing</div>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6">
+            <p class="text-slate-300 italic">“La propuesta está enfocada en formar personas capaces de gestionar, liderar y tomar decisiones con criterio.”</p>
+            <div class="mt-4 font-semibold text-white">Florencia, estudiante de Administración</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Requisitos />
+
+    <section class="py-16 px-4 bg-slate-950">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold text-white">Preguntas frecuentes</h2>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+            <h3 class="font-bold text-white">¿Las carreras tienen certificado oficial?</h3>
+            <p class="mt-2 text-slate-300">Sí, todas nuestras propuestas están orientadas a formar profesionales con una salida académica y técnica de nivel superior.</p>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+            <h3 class="font-bold text-white">¿Hay que presentar documentación completa?</h3>
+            <p class="mt-2 text-slate-300">Podés iniciar con la documentación básica y luego completar la inscripción según el proceso establecido por la institución.</p>
+          </div>
+          <div class="bg-slate-800 border border-slate-700 rounded-xl p-5">
+            <h3 class="font-bold text-white">¿Puedo consultar por WhatsApp?</h3>
+            <p class="mt-2 text-slate-300">Sí. Podés escribirnos desde el formulario de contacto o comunicarte directamente con la institución para asesorarte.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="py-16 px-4 bg-slate-900 text-white">
+      <div class="max-w-xl mx-auto space-y-6 text-center">
+        <h2 class="text-3xl font-bold">Pedí más información</h2>
+        <p class="text-slate-400">Dejanos tus datos y te contactamos para guiarte en la inscripción.</p>
+        
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4 text-left">
+          <input type="hidden" name="access_key" value="8669b4bb-cf23-49e2-a6b1-0374e5f15085"/>
+          
+          <div>
+            <label class="block text-sm font-medium mb-1">Nombre y Apellido</label>
+            <input type="text" name="name" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-indigo-500" placeholder="Ej. Juan Pérez">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Correo Electrónico / WhatsApp</label>
+            <input type="text" name="contact" required class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-indigo-500" placeholder="Ej. 3764123456">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Carrera de Interés</label>
+            <select name="carrera" class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-indigo-500">
+              {carreras.map(c => <option value={c.titulo}>{c.titulo}</option>)}
+            </select>
+          </div>
+          <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold p-3 rounded-lg transition-colors">
+            Enviar Consulta
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
